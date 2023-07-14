@@ -3,13 +3,16 @@ import {
   View,
   Text,
   StyleSheet,
-  Image,
   TouchableOpacity,
   ImageBackground,
 } from "react-native";
 import * as Animatable from "react-native-animatable";
+import { useNavigation } from "@react-navigation/native";
+import { StackNavigationProp } from "@react-navigation/stack";
+import { RootStackParamList } from "../../routes";
 import { useFonts } from "expo-font";
 
+export type StackNavigation = StackNavigationProp<RootStackParamList>;
 export default function Home() {
   const [loaded] = useFonts({
     HarryPotter: require("../../assets/fonts/HarryPotter.ttf"),
@@ -18,6 +21,8 @@ export default function Home() {
   if (!loaded) {
     return null;
   }
+
+  const navigation = useNavigation<StackNavigation>();
 
   return (
     <View style={styles.container}>
@@ -50,7 +55,10 @@ export default function Home() {
         animation="fadeInUp"
         style={styles.buttonContainer}
       >
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => navigation.navigate("HouseSelection")}
+        >
           <Text style={styles.buttonText}>Enter</Text>
         </TouchableOpacity>
       </Animatable.View>
