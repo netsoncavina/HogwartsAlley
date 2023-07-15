@@ -14,6 +14,7 @@ import { useFonts } from "expo-font";
 
 export type StackNavigation = StackNavigationProp<RootStackParamList>;
 export default function Home() {
+  const navigation = useNavigation<StackNavigation>();
   const [loaded] = useFonts({
     HarryPotter: require("../../assets/fonts/HarryPotter.ttf"),
   });
@@ -21,8 +22,6 @@ export default function Home() {
   if (!loaded) {
     return null;
   }
-
-  const navigation = useNavigation<StackNavigation>();
 
   return (
     <View style={styles.container}>
