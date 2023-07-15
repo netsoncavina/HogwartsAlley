@@ -7,7 +7,6 @@ import {
   ImageBackground,
   Image,
 } from "react-native";
-import { useFonts } from "expo-font";
 
 interface Props {
   houseName: string;
@@ -15,27 +14,19 @@ interface Props {
 }
 
 const HouseCard = ({ houseName, image }: Props) => {
-  //   const [loaded] = useFonts({
-  //     HarryPotter: require("../assets/fonts/HarryPotter.ttf"),
-  //   });
-
-  //   if (!loaded) {
-  //     return null;
-  //   }
-
   return (
     <View style={styles.container}>
       {houseName !== "Staff" ? (
         <ImageBackground
           source={{ uri: image }}
           style={{ height: "100%", width: "100%", position: "absolute" }}
-          imageStyle={{ opacity: 0.3, backgroundColor: "black" }}
+          imageStyle={{ opacity: 0.5, backgroundColor: "black" }}
         />
       ) : (
         <ImageBackground
           source={require("../assets/logos/hogwarts-logo.png")}
           style={{ height: "100%", width: "100%", position: "absolute" }}
-          imageStyle={{ opacity: 0.3, backgroundColor: "black" }}
+          imageStyle={{ opacity: 0.7, backgroundColor: "black" }}
         />
       )}
       <Text style={styles.cardText}>{houseName}</Text>
@@ -55,7 +46,7 @@ const styles = StyleSheet.create({
   },
   cardText: {
     fontFamily: "HarryPotter",
-    fontSize: 40,
+    fontSize: 50,
     color: "white",
     marginRight: 20,
   },
