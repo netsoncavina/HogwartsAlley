@@ -6,16 +6,27 @@ import {
   Dimensions,
   ImageBackground,
   Image,
+  TouchableOpacity,
 } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import { StackNavigationProp } from "@react-navigation/stack";
+import { RootStackParamList } from "../routes";
 
 interface Props {
   houseName: string;
   image?: string;
 }
+export type StackNavigation = StackNavigationProp<RootStackParamList>;
 
 const HouseCard = ({ houseName, image }: Props) => {
+  const navigation = useNavigation<StackNavigation>();
   return (
-    <View style={styles.container}>
+    <TouchableOpacity
+      style={styles.container}
+      onPress={() =>
+        navigation.navigate("HouseStudents", { houseName: houseName } as any)
+      }
+    >
       {houseName !== "Staff" ? (
         <ImageBackground
           source={{ uri: image }}
@@ -30,7 +41,7 @@ const HouseCard = ({ houseName, image }: Props) => {
         />
       )}
       <Text style={styles.cardText}>{houseName}</Text>
-    </View>
+    </TouchableOpacity>
   );
 };
 
