@@ -16,7 +16,7 @@ interface Props {
 interface Student {
   id: string;
   name: string;
-  alternateNames: string[];
+  alternate_names: string[];
   species: string;
   gender: string;
   house: string;
@@ -99,7 +99,7 @@ const HouseStudents = ({ route }: Props) => {
               key={student.id}
               id={student.id}
               name={student.name}
-              alternateNames={student.alternateNames}
+              alternateNames={student.alternate_names}
               species={student.species}
               image={student.image}
               gender={student.gender}
