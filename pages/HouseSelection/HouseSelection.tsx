@@ -35,8 +35,8 @@ const HouseSelection = () => {
         imageStyle={{ opacity: 0.2, backgroundColor: "black" }}
       />
 
-      {houses.map((house) => (
-        <HouseCard houseName={house.name} image={house.image} />
+      {houses.map((house, idx) => (
+        <HouseCard key={idx} houseName={house.name} image={house.image} />
       ))}
     </View>
   );
