@@ -7,7 +7,7 @@ import {
   ImageBackground,
 } from "react-native";
 import { Skeleton } from "@rneui/themed";
-import { getStudentsByHouse } from "../../api";
+import { getStudentsByHouse, getStaff } from "../../api";
 import StudentCard from "../../components/StudentCard";
 
 interface Props {
@@ -70,12 +70,14 @@ const HouseStudents = ({ route }: Props) => {
       break;
     default:
       backgroundImage = "https://wallpapercave.com/wp/wp11082248.jpg";
-      houseColor = "#0E1A40";
+      houseColor = "grey";
   }
 
   useEffect(() => {
     // setTimeout(() => {
-    getStudentsByHouse(houseName).then((res) => setStudents(res));
+    houseName === "Staff"
+      ? getStaff().then((res) => setStudents(res))
+      : getStudentsByHouse(houseName).then((res) => setStudents(res));
     setLoading(false);
     // }, 500);
   }, []);
