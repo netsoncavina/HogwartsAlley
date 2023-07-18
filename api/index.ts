@@ -6,3 +6,10 @@ export const getStudentsByHouse = async (house: string) => {
   );
   return data;
 };
+
+export const getStaff = async () => {
+  const { data } = await axios.get(
+    `https://hp-api.onrender.com/api/characters/staff`
+  );
+  return data;
+};
