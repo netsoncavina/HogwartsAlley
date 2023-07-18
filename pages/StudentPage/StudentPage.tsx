@@ -44,18 +44,18 @@ const StudentPage = ({ route }: Props) => {
           <Animatable.Image
             animation="flipInY"
             duration={1500}
-            delay={500}
+            delay={300}
             source={require("../../assets/icons/user.png")}
             style={{
-              height: 150,
-              width: 150,
+              height: 200,
+              width: 200,
             }}
           />
         ) : (
           <Animatable.Image
             animation="flipInY"
             duration={1500}
-            delay={500}
+            delay={300}
             source={{ uri: image }}
             style={styles.image}
           />
