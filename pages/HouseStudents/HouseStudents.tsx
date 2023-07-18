@@ -32,7 +32,7 @@ interface Student {
   hogwartsStudent: boolean;
   hogwartsStaff: boolean;
   actor: string;
-  alternateActors: string[];
+  alternate_actors: string[];
   alive: boolean;
   image: string;
 }
@@ -116,7 +116,7 @@ const HouseStudents = ({ route }: Props) => {
               hogwartsStudent={student.hogwartsStudent}
               hogwartsStaff={student.hogwartsStaff}
               actor={student.actor}
-              alternateActors={student.alternateActors}
+              alternateActors={student.alternate_actors}
               alive={student.alive}
             />
           ))}
