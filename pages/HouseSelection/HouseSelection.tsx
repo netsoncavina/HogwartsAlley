@@ -36,7 +36,12 @@ const HouseSelection = () => {
       />
 
       {houses.map((house, idx) => (
-        <HouseCard key={idx} houseName={house.name} image={house.image} />
+        <HouseCard
+          key={idx}
+          houseName={house.name}
+          image={house.image}
+          fadeInDirection={idx % 2 === 0 ? "Left" : "Right"}
+        />
       ))}
     </View>
   );
