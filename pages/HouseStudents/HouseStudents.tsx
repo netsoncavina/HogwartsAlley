@@ -6,6 +6,7 @@ import {
   View,
   ImageBackground,
 } from "react-native";
+import { Skeleton } from "@rneui/themed";
 import { getStudentsByHouse } from "../../api";
 import StudentCard from "../../components/StudentCard";
 
@@ -46,6 +47,7 @@ interface Wand {
 const HouseStudents = ({ route }: Props) => {
   const { houseName } = route.params;
   const [students, setStudents] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   let backgroundImage = "";
   let houseColor = "";
@@ -72,9 +74,10 @@ const HouseStudents = ({ route }: Props) => {
   }
 
   useEffect(() => {
-    setTimeout(() => {
-      getStudentsByHouse(houseName).then((res) => setStudents(res));
-    }, 500);
+    // setTimeout(() => {
+    getStudentsByHouse(houseName).then((res) => setStudents(res));
+    setLoading(false);
+    // }, 500);
   }, []);
   return (
     <ImageBackground
@@ -94,32 +97,52 @@ const HouseStudents = ({ route }: Props) => {
       >
         <Text style={{ color: "black" }}>{houseName}</Text>
         <View style={styles.studentsContainer}>
-          {students.map((student: Student) => (
-            <StudentCard
-              key={student.id}
-              id={student.id}
-              name={student.name}
-              alternateNames={student.alternate_names}
-              species={student.species}
-              image={student.image}
-              gender={student.gender}
-              house={student.house}
-              houseColor={houseColor}
-              dateOfBirth={student.dateOfBirth}
-              yearOfBirth={student.yearOfBirth}
-              wizard={student.wizard}
-              ancestry={student.ancestry}
-              eyeColour={student.eyeColour}
-              hairColour={student.hairColour}
-              wand={student.wand}
-              patronus={student.patronus}
-              hogwartsStudent={student.hogwartsStudent}
-              hogwartsStaff={student.hogwartsStaff}
-              actor={student.actor}
-              alternateActors={student.alternate_actors}
-              alive={student.alive}
-            />
-          ))}
+          {loading
+            ? Array(30)
+                .fill(0)
+                .map((_, index) => (
+                  <Skeleton
+                    key={index}
+                    animation="wave"
+                    width={200}
+                    height={200}
+                    style={{
+                      height: 150,
+                      width: 150,
+                      // justifyContent: "flex-end",
+                      // alignItems: "center",
+                      borderRadius: 20,
+                      margin: 10,
+                      // backgroundColor: "rgba(255,255,255,0.3)",
+                    }}
+                  />
+                ))
+            : students.map((student: Student) => (
+                <StudentCard
+                  key={student.id}
+                  id={student.id}
+                  name={student.name}
+                  alternateNames={student.alternate_names}
+                  species={student.species}
+                  image={student.image}
+                  gender={student.gender}
+                  house={student.house}
+                  houseColor={houseColor}
+                  dateOfBirth={student.dateOfBirth}
+                  yearOfBirth={student.yearOfBirth}
+                  wizard={student.wizard}
+                  ancestry={student.ancestry}
+                  eyeColour={student.eyeColour}
+                  hairColour={student.hairColour}
+                  wand={student.wand}
+                  patronus={student.patronus}
+                  hogwartsStudent={student.hogwartsStudent}
+                  hogwartsStaff={student.hogwartsStaff}
+                  actor={student.actor}
+                  alternateActors={student.alternate_actors}
+                  alive={student.alive}
+                />
+              ))}
         </View>
       </ScrollView>
     </ImageBackground>
