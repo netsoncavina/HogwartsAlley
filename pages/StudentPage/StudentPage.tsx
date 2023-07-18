@@ -79,7 +79,6 @@ const StudentPage = ({ route }: Props) => {
           <Text style={styles.text}>
             Current age : {yearOfBirth ? 2023 - yearOfBirth : "N/A"}
           </Text>
-          <Text style={styles.text}>Species: {species}</Text>
           <Text style={styles.text}>House: {house}</Text>
           <Text style={styles.text}>
             Ancestry: {infoNotAvailable(ancestry)}
