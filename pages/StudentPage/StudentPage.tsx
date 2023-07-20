@@ -81,8 +81,8 @@ const StudentPage = ({ route }: Props) => {
               delay={300}
               source={require("../../assets/icons/user.png")}
               style={{
-                height: 200,
-                width: 200,
+                height: 150,
+                width: 150,
               }}
             />
           ) : (
@@ -195,7 +195,7 @@ const styles = StyleSheet.create({
     height: "90%",
     borderRadius: 30,
     padding: 10,
-    backgroundColor: "rgba(0,0,0,0.5)",
+    backgroundColor: "rgba(0,0,0,0.8)",
   },
   image: {
     height: 150,
@@ -208,7 +208,7 @@ const styles = StyleSheet.create({
     height: 40,
     textAlign: "center",
     justifyContent: "center",
-    backgroundColor: "rgba(0,0,0,0.5)",
+    backgroundColor: "rgba(0,0,0,0.8)",
     fontFamily: "HarryPotter",
     fontSize: 30,
     color: "white",
