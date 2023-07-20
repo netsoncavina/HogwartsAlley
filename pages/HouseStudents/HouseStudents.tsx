@@ -9,6 +9,13 @@ import {
 import { Skeleton } from "@rneui/themed";
 import { getStudentsByHouse, getStaff } from "../../api";
 import StudentCard from "../../components/StudentCard";
+import {
+  GryffindorBG,
+  SlytherinBG,
+  HufflepuffBG,
+  RavenclawBG,
+  StaffBG,
+} from "../../utils/utils";
 
 interface Props {
   route: any;
@@ -49,30 +56,27 @@ const HouseStudents = ({ route }: Props) => {
   const [students, setStudents] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  let backgroundImage = "";
-  let houseColor = "";
+  let backgroundImage;
   switch (houseName) {
     case "Gryffindor":
-      backgroundImage = "https://wallpapercave.com/wp/wp10058569.jpg";
-      houseColor = "#740001";
+      backgroundImage = GryffindorBG;
+
       break;
     case "Slytherin":
-      backgroundImage = "https://wallpapercave.com/wp/wp11998116.jpg";
-      houseColor = "#1A472A";
+      backgroundImage = SlytherinBG;
+
       break;
     case "Ravenclaw":
-      backgroundImage = "https://wallpapercave.com/wp/wp11082248.jpg";
-      houseColor = "#0E1A40";
+      backgroundImage = RavenclawBG;
+
       break;
     case "Hufflepuff":
-      backgroundImage = "https://wallpapercave.com/wp/wp1958769.jpg";
-      houseColor = "#FFD800";
+      backgroundImage = HufflepuffBG;
+
       break;
     default:
-      backgroundImage = "https://wallpapercave.com/wp/wp11082248.jpg";
-      houseColor = "grey";
+      backgroundImage = StaffBG;
   }
-
   useEffect(() => {
     // setTimeout(() => {
     houseName === "Staff"
@@ -83,9 +87,7 @@ const HouseStudents = ({ route }: Props) => {
   }, []);
   return (
     <ImageBackground
-      source={{
-        uri: backgroundImage,
-      }}
+      source={{ uri: backgroundImage }}
       style={{ height: "100%", width: "100%" }}
     >
       <ScrollView
@@ -93,7 +95,7 @@ const HouseStudents = ({ route }: Props) => {
           flex: 1,
           height: "100%",
           width: "100%",
-          backgroundColor: houseColor,
+          backgroundColor: "rgba(255,255,255,0)",
         }}
         contentContainerStyle={{ alignItems: "center" }}
       >
@@ -129,7 +131,7 @@ const HouseStudents = ({ route }: Props) => {
                   image={student.image}
                   gender={student.gender}
                   house={student.house}
-                  houseColor={houseColor}
+                  houseColor={"red"}
                   dateOfBirth={student.dateOfBirth}
                   yearOfBirth={student.yearOfBirth}
                   wizard={student.wizard}
